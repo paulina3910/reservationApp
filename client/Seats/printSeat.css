@@ -1,0 +1,4 @@
+/* CSS declarations go here */
+button[data-disabled="true"] {
+    color: rgb(3, 1, 1);
+}

@@ -1,0 +1,19 @@
+<template name="printSeat">
+    {{#unless  _.isEmpty seat}}
+      <form class="seat-booking">
+        <button data-disabled="{{seat.booked}}" data-id="{{seat.id}}" class="seat-icon">{{seat.description}}</button>
+      </form>
+    {{/unless }}
+</template>
+
+<body>      
+<table>
+{{#each row in rows}}
+      <tr>
+  {{#each seat in row}}
+    <td>{{> printSeat seat=seat}}</td>
+        {{/each}}
+       </tr>
+    {{/each}}
+          </table>           
+        </body>

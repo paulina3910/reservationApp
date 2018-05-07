@@ -1,0 +1,4 @@
+/* CSS declarations go here */
+button[ data-taken="true"] {
+    background-color: green;
+}

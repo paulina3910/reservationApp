@@ -1,0 +1,244 @@
+@import 'sass/_normalize.scss';
+@import 'sass/_base.scss';
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    color: $text;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-weight: 100;
+    font-size: 3.998em;
+}
+
+h2 {
+    font-weight: 100;
+    font-size: 3.157em;
+}
+
+h3 {
+    font-size: 1.777em;
+    font-weight: 100;
+}
+
+p {
+    font-size: 1em;
+}
+
+
+
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px 10px 7px;
+}
+
+.btn {
+    background-color: DodgerBlue; /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */  
+    padding: 9px 12px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+
+.btn-green {
+    background-color: green; /* Blue background */
+    color: white; /* White text */  
+    padding: 9px 12px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: RoyalBlue;
+}
+
+.btn-green:hover{
+        background-color: rgb(45, 83, 45);
+}
+.header {
+    background: white;
+    border-bottom: 1px solid $dgrey;
+    color: $text;
+    position: relative;
+    z-index: 10;
+    height: 60px;
+    padding: 5px 5%;
+    display: flex;
+    justify-content: space-between;
+    @include card(1);
+    a {
+        color: $text;
+    }
+    .site-title {
+        line-height: 0;
+        margin: 0;
+    }
+}
+
+.main-nav {
+    ul {
+        list-style: none;
+        display: flex;
+        padding: 0;
+    }
+    li + li {
+        margin-left: 20px;
+    }
+    a {
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+    }
+}
+
+.my .navtabs li a{
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    width: 150px;
+    height: 33px;
+    margin-right: 10px;
+    text-align: center;
+    color: rgb(182, 196, 37);
+    font-family: Lato;
+    font-size: 16px;
+    padding: 15px 0px 0px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(212, 215, 208);
+    border-image: initial;
+    border-radius: 0px;
+    
+}
+
+.login-toggle {
+    cursor: pointer;
+}
+
+
+// Homepage
+.billboard {
+    background-image: url('/met-stars.png'), linear-gradient(#202023, #19283f);
+    color: #FFF;
+    text-align: center;
+    border-bottom: 1px solid $dgrey;
+    padding: 40px 5%;
+}
+
+
+.app-layout {
+    margin-left: 80px;
+    min-height: 100vh;
+    padding: 40px 60px;
+}
+
+.app-nav {
+    z-index: 9;
+    position: fixed;
+    width: 80px;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    background: white;
+    overflow: hidden;
+    color: $text;
+    padding-top: 100px;
+    transition: all 0.3s ease;
+    border-right: solid 1px $dgrey;
+    &:hover {
+        width: 300px;
+        a > span {
+            opacity: 1;
+            transform: translate3d(0, 0,0);
+        }
+    }
+    a {
+        width: 100%;
+        padding: 10px 25px;
+        color: $text;
+        display: block;
+        white-space: nowrap;
+        font-size: 1em;
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s ease;
+        i {
+            font-size: 2em;
+            margin-right: 20px;
+        }
+        > span {
+            transform: translate3d(20px, 0,0);
+            opacity: 0;
+            transition: background 0.3s ease;
+        }
+        &:hover {
+            color: #FFF;
+            border-color: $action;
+            background: $nav - 20;
+        }
+    }
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+}
+
+.page-title {
+    margin-top: 0;
+}
+
+
+
+.user_id {
+    color: $blue;
+    cursor: pointer;
+}
+
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+     zoom:1; /* hasLayout ie7 trigger */
+}
+
+.nav-tabs, .nav-pills {
+    text-align:center;
+}
+
+
+.defaultTextBox {
+    padding: 0;
+    width: 800px;
+    position: relative;
+    left: 0;
+    outline: none;
+    border: 1px solid #cdcdcd;
+    border-color: rgba(0,0,0,.15);
+    background-color: white;
+    font-size: 16px;
+}
+.advancedSearchTextbox {
+    width: 900px;
+    margin-right: -4px;
+}
+
+fieldset {
+    height: 50%;
+    width: 80%;
+    background: #ffffff;
+    margin: auto;
+    text-align: center;
+    border: 2px groove (internal value);
+  }

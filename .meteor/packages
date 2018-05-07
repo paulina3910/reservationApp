@@ -25,12 +25,18 @@ babel-runtime
 kadira:flow-router
 kadira:blaze-layout
 
-aldeed:collection2
 meteortoys:allthings
-aldeed:simple-schema@1.0.3
-aldeed:autoform
 
-aldeed:collection2-core@2.0.0
+zimme:active-route
+
+fourseven:scss
+fortawesome:fontawesome
 
 
-
+twbs:bootstrap
+email
+accounts-password
+accounts-ui
+alanning:roles
+cfs:standard-packages
+cfs:gridfs

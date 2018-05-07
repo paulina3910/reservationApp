@@ -1,0 +1,35 @@
+<template name="createVenues">
+    {{#if isInRole 'admin'}}
+    <header>
+        {{> Header}}
+    </header>
+    {{>AdminNav}}
+    <div name="containar">
+        <center>
+            <form class='new-venue'>
+                <div class="form-group">
+                    <div class="row">
+                        <h3> Nazwa Sali</h3>
+                        <textarea name="nameOfVenue" rows="1"></textarea>
+                    </div>
+                    <div class="row">
+                        <center>
+                            <h3>Liczba rzędów:</h3>
+                            <input type="number" name="numberOfRows" min="1" max="100">
+                        </center>
+                    </div>
+                    <div class="row">
+                        <h3>Liczba kolumn</h3>
+                        <input type="number" name="numberOfColumns" min="1" max="100">
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Dodaj Sale">
+            </form>
+        </center>
+    </div>
+
+    {{else}}
+    {{>App_notFound}}
+
+    {{/if}}
+</template>

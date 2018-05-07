@@ -1,0 +1,16 @@
+<template name="MainNavigation">
+        <div class="billboard">
+            <h2>Wydarzenia</h2>
+            <h3>Zarezerwuj swoje miejsce już dziś</h3>
+            <div class="btn-group">
+                    {{#if currentUser}}
+                    <a id="logout" class="btn">Wyloguj się</a>
+                    {{else}}
+
+                    <a id="login" class="btn">Zaloguj się</a>
+                    <a id="register" class="btn">Zarejestruj się</a>
+                    {{/if}}
+                </div>
+        </div>
+        {{>Register}}
+    </template>

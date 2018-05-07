@@ -1,0 +1,29 @@
+<template name="AllEvents">
+    <header>
+        {{> Header}} {{> MainNavigation}} {{#if isInRole 'admin'}} {{>AdminNav}} {{/if}}
+    </header>
+    {{#each event in eventFromDB}}
+<br>
+    <center>
+        <fieldset>  
+            <div class="content">
+            <div class="box box-danger direct-chat direct-chat-danger">
+                <div class="box-header with-border">
+                <b> <h2 class="box-title"> {{event.name}}</h2></b>
+                </div>
+            
+                <div class="box-body">
+                <b> <i class="fa fa-calendar"></i> {{event.date}}<br></b>
+              <b><i class="fa fa-clock-o"></i> {{event.time}} <br></b>
+                     {{event.shortdescription}}<br>
+                    <a href="http://localhost:3000/events/{{event._id}}" class="btn btn-primary">Zobacz wydarzenie</a>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+        <br>
+
+    </center>
+    {{/each}} {{>Login}}
+</template>

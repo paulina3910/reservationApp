@@ -1,10 +1,63 @@
 <template name="NewEvent">
-    <form>
-        <input type="text" name="Nazwa wydarzenia">
-        <input type="text" name="Opis Wydarzenia">
-        <select>
-            <option name = "myOption" value = myLog>myLog</option>
-         </select>
-        <input type="submit" value="Dodaj wydarzenie">
-    </form>
+    {{#if isInRole 'admin'}} {{> Header}} {{>AdminNav}}
+    <center>
+        <form class='new-event'>
+            <div class="form-group">
+                <div class="row">
+                    <h3> Nazwa Wydarzenia:</h3>
+                    <textarea class="defaultTextBox advancedSearchTextBox" name="nameOfEvent" rows="2"></textarea>
+
+                </div>
+                <div class="row">
+
+                    <h3> Opis Wydarzenia:</h3>
+                    <textarea class="defaultTextBox advancedSearchTextBox" name="DescOfEvent" rows="10"></textarea>
+
+                </div>
+                <div class="row">
+
+                    <h3> Data:</h3>
+                    <input type="date" name="dateOfEvent" >
+
+                </div>
+                <div class="row">
+
+                    <h3> Godzina:</h3>
+                    <input type="time" name="timeOfEvent">
+                </div>
+                <div class="row">
+
+                    <h3>Krótki opis:</h3>
+                    <textarea class="defaultTextBox advancedSearchTextBox" name="ShortDescOfEvent" rows="3"></textarea>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <center>
+                        <h3>Proszę wybrać miejsce gdzie wydarzenie ma się odbyć</h3>
+                        <select class="defaultTextBox advancedSearchTextBox" id="dropDownList">
+                            <option disabled="disabled">Prosze wybrać Aule</option>
+                            {{#each venueFromDB}}
+                            <option name="{{nameOfVenue}}" value="{{idOfVenue}}">{{nameOfVenue}}</option>
+                            {{/each}}
+                        </select>
+                    </center>
+                </div>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Dodaj wydarzenie">
+        </form>
+    </center>
+    <script type="text/javascript">
+        $(function () {
+            $("#profileImage:file").change(function () {
+                var fileName = $(this).val();
+                $("span").text(fileName);
+                $("label").hide();
+            });
+        });
+    </script> 
+    {{else}}
+    {{>App_notFound}}
+    {{/if}}
 </template>

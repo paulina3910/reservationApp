@@ -1,84 +1,59 @@
 import { Meteor } from 'meteor/meteor';
-
+/*
 Meteor.startup(() => {
-  // code to run on server at startup
+  Meteor.startup(function () {
+    process.env.MAIL_URL = 'smtps://postmaster%40sandboxcbffdf5fecea4850b7143985b3a3c0a0.mailgun.org:2784aec27a47de717d061d0b82652e80-80bfc9ce-bda593d1@smtp.mailgun.org:587';
+  });
+  */
+
+
+Meteor.startup(function () {
+});
+
+smtp = {
+  username: 'paulinex3910@gmail.com',   // eg: server@gentlenode.com
+  password: 'paulina3910',   // eg: 3eeP1gtizk5eziohfervU
+  server: 'smtp.gmail.com',  // eg: mail.gandi.net
+  port: 465
+}
+
+process.env.MAIL_URL = 'smtps://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
+Meteor.methods({
+  sendEmail: function (email, xLocation, yLocation,description) {
+
+    Email.send({
+      from: "meteor.email.2014@gmail.com",
+      to: email,
+      subject: "Zarezerwowany bilet",
+      text: "Cześć,                            Zarezerwowałeś bilet na wydarzenie twoje miejsce to rząd "+description+ "                                                                        Zapraszamy!!!"
+    });
+
+
+  },
+  deleteEvent: function(id)
+  {
+    Events.remove(id);
+  }
 });
 
 import { Mongo } from 'meteor/mongo';
+
+
 Events = new Mongo.Collection('events');
 
+Venues = new Mongo.Collection('venues');
 
-import { Venues } from '../collections/Venues.js';
-
-
-
-
-
-Venues.insert({
-  name:"AulaA",
-  seats:[
-      {xLocation:1, yLocation:1,description:"A1"},
-      {xLocation:2, yLocation:1,description:"A2"},
-      {xLocation:3, yLocation:1,description:"A3"},
-      {xLocation:4, yLocation:1,description:"A4"},
-      {xLocation:5, yLocation:1,description:"A5"},
-      {xLocation:6, yLocation:1,description:"A6"},
-      {xLocation:7, yLocation:1,description:"A7"},
-      {xLocation:8, yLocation:1,description:"A8"},
-      {xLocation:9, yLocation:1,description:"A9"},
-      {xLocation:10, yLocation:1,description:"A10"},
-      {xLocation:11, yLocation:1,description:"A11"},
-      {xLocation:12, yLocation:1,description:"A12"},
-      {xLocation:13, yLocation:1,description:"A13"},
-      {xLocation:14, yLocation:1,description:"A14"},
-      {xLocation:15, yLocation:1,description:"A15"},
-      {xLocation:16, yLocation:1,description:"A16"},
-      {xLocation:17, yLocation:1,description:"A17"},
-      {xLocation:18, yLocation:1,description:"A18"},
-      {xLocation:19, yLocation:1,description:"A19"},
-      {xLocation:20, yLocation:1,description:"A20"},
-
-       {xLocation:1, yLocation:2,description:"B1"},
-      {xLocation:2, yLocation:2,description:"B2"},
-      {xLocation:3, yLocation:2,description:"B3"},
-      {xLocation:4, yLocation:2,description:"B4"},
-      {xLocation:5, yLocation:2,description:"B5"},
-      {xLocation:6, yLocation:2,description:"B6"},
-      {xLocation:7, yLocation:2,description:"B7"},
-      {xLocation:8, yLocation:2,description:"B8"},
-      {xLocation:9, yLocation:2,description:"B9"},
-      {xLocation:10, yLocation:2,description:"B10"},
-      {xLocation:11, yLocation:2,description:"B11"},
-      {xLocation:12, yLocation:2,description:"B12"},
-      {xLocation:13, yLocation:2,description:"B13"},
-      {xLocation:14, yLocation:2,description:"B14"},
-      {xLocation:15, yLocation:2,description:"B15"},
-      {xLocation:16, yLocation:2,description:"B16"},
-      {xLocation:17, yLocation:2,description:"B17"},
-      {xLocation:18, yLocation:2,description:"B18"},
-      {xLocation:19, yLocation:2,description:"B19"},
-      {xLocation:20, yLocation:2,description:"B20"},
-
-       {xLocation:1, yLocation:3,description:"C1"},
-      {xLocation:2, yLocation:3,description:"C2"},
-      {xLocation:3, yLocation:3,description:"C3"},
-      {xLocation:4, yLocation:3,description:"C4"},
-      {xLocation:5, yLocation:3,description:"C5"},
-      {xLocation:6, yLocation:3,description:"C6"},
-      {xLocation:7, yLocation:3,description:"C7"},
-      {xLocation:8, yLocation:3,description:"C8"},
-      {xLocation:9, yLocation:3,description:"C9"},
-      {xLocation:10, yLocation:3,description:"C10"},
-      {xLocation:11, yLocation:3,description:"C11"},
-      {xLocation:12, yLocation:3,description:"C12"},
-      {xLocation:13, yLocation:3,description:"C13"},
-      {xLocation:14, yLocation:3,description:"C14"},
-      {xLocation:15, yLocation:3,description:"C15"},
-      {xLocation:16, yLocation:3,description:"C16"},
-      {xLocation:17, yLocation:3,description:"C17"},
-      {xLocation:18, yLocation:3,description:"C18"},
-      {xLocation:19, yLocation:3,description:"C19"},
-      {xLocation:20, yLocation:3,description:"C20"}
-
-  ]
+ProfileImages = new FS.Collection("ProfileImages", {
+  stores: [new FS.Store.GridFS("ProfileImages")]
 });
+
+UserImages = new Mongo.Collection("UserImages");
+
+Reservation = new Mongo.Collection('reservation');
+
+
+
+
+
+
+

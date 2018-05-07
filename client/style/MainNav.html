@@ -1,0 +1,28 @@
+<template name="MainNav">
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/AllEvents">Strona Główna</a></li>
+                {{#if currentUser}}
+                <li><a href="#"  id="logout">Wyloguj się</a></li>
+                {{else}}
+                <li><a id="login">Zaloguj się</a></li>
+                {{/if}}
+            </ul>
+        </nav>
+    </template>
+
+
+    <template name="Header1">
+            <div class="containar">
+                <nav class="navbar navbar-light bg-light">
+                    <form class="form-inline">
+                        <a class="navbar-brand" href="/AllEvents">Strona Główna</a>
+                        {{#if currentUser}}
+                        <a class="navbar-brand" id="logout" href="#">Wyloguj się</a>
+                    {{else}}
+                        <a class="navbar-brand" id="login">Zaloguj się</a>
+                    {{/if}}
+                    </form>
+                </nav>
+            </div>   
+        </template>
